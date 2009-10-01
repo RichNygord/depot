@@ -1,0 +1,135 @@
+  [4;36;1mSQL (12.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateProducts (20090415174625)
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090415174625')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("products")[0m
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-09-30 21:28:45) [GET]
+  [4;36;1mProduct Load (0.9ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/products
+Rendering products/index
+Completed in 89ms (View: 72, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-09-30 21:28:57) [GET]
+Rendering template within layouts/products
+Rendering products/new
+Completed in 36ms (View: 21, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing ProductsController#create (for 127.0.0.1 at 2009-09-30 21:29:30) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"0f1A/+iILpGrPxAsRzwDYDA+ha4R5xe4XUX1JYry4uE=", "product"=>{"image_url"=>"", "title"=>"product 1", "description"=>"prod 1 desc"}}
+  [4;35;1mProduct Create (16.0ms)[0m   [0mINSERT INTO "products" ("image_url", "updated_at", "title", "description", "created_at") VALUES('', '2009-10-01 01:29:30', 'product 1', 'prod 1 desc', '2009-10-01 01:29:30')[0m
+Redirected to http://localhost:3000/products/1
+Completed in 77ms (DB: 16) | 302 Found [http://localhost/products]
+
+
+Processing ProductsController#show (for 127.0.0.1 at 2009-09-30 21:29:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/products
+Rendering products/show
+Completed in 37ms (View: 18, DB: 1) | 200 OK [http://localhost/products/1]
+
+
+Processing ProductsController#edit (for 127.0.0.1 at 2009-09-30 21:32:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/products
+Rendering products/edit
+Completed in 37ms (View: 23, DB: 0) | 200 OK [http://localhost/products/1/edit]
+
+
+Processing ProductsController#update (for 127.0.0.1 at 2009-09-30 21:32:57) [PUT]
+  Parameters: {"commit"=>"Update", "authenticity_token"=>"0f1A/+iILpGrPxAsRzwDYDA+ha4R5xe4XUX1JYry4uE=", "product"=>{"image_url"=>"", "title"=>"product 1", "description"=>"prod 1 description"}, "id"=>"1"}
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+  [4;35;1mProduct Update (0.4ms)[0m   [0mUPDATE "products" SET "description" = 'prod 1 description', "updated_at" = '2009-10-01 01:32:57' WHERE "id" = 1[0m
+Redirected to http://localhost:3000/products/1
+Completed in 42ms (DB: 1) | 302 Found [http://localhost/products/1]
+
+
+Processing ProductsController#show (for 127.0.0.1 at 2009-09-30 21:32:57) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mProduct Load (1.1ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/products
+Rendering products/show
+Completed in 20ms (View: 4, DB: 1) | 200 OK [http://localhost/products/1]
+
+
+Processing ProductsController#edit (for 127.0.0.1 at 2009-09-30 21:33:02) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/products
+Rendering products/edit
+Completed in 27ms (View: 17, DB: 0) | 200 OK [http://localhost/products/1/edit]
+
+
+Processing ProductsController#show (for 127.0.0.1 at 2009-09-30 21:33:12) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mProduct Load (0.5ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 1) [0m
+Rendering template within layouts/products
+Rendering products/show
+Completed in 23ms (View: 4, DB: 0) | 200 OK [http://localhost/products/1]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-09-30 21:33:18) [GET]
+  [4;35;1mProduct Load (10.9ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/products
+Rendering products/index
+Completed in 24ms (View: 7, DB: 11) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#new (for 127.0.0.1 at 2009-09-30 21:33:26) [GET]
+Rendering template within layouts/products
+Rendering products/new
+Completed in 28ms (View: 6, DB: 0) | 200 OK [http://localhost/products/new]
+
+
+Processing ProductsController#create (for 127.0.0.1 at 2009-09-30 21:34:22) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"0f1A/+iILpGrPxAsRzwDYDA+ha4R5xe4XUX1JYry4uE=", "product"=>{"image_url"=>"", "title"=>"prod 2", "description"=>"prd 2 desc"}}
+  [4;36;1mProduct Create (0.4ms)[0m   [0;1mINSERT INTO "products" ("image_url", "updated_at", "title", "description", "created_at") VALUES('', '2009-10-01 01:34:22', 'prod 2', 'prd 2 desc', '2009-10-01 01:34:22')[0m
+Redirected to http://localhost:3000/products/2
+Completed in 34ms (DB: 0) | 302 Found [http://localhost/products]
+
+
+Processing ProductsController#show (for 127.0.0.1 at 2009-09-30 21:34:22) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mProduct Load (0.5ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 2) [0m
+Rendering template within layouts/products
+Rendering products/show
+Completed in 23ms (View: 8, DB: 0) | 200 OK [http://localhost/products/2]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-09-30 21:34:28) [GET]
+  [4;36;1mProduct Load (0.8ms)[0m   [0;1mSELECT * FROM "products" [0m
+Rendering template within layouts/products
+Rendering products/index
+Completed in 25ms (View: 18, DB: 1) | 200 OK [http://localhost/products]
+
+
+Processing ProductsController#index (for 127.0.0.1 at 2009-09-30 21:39:03) [GET]
+  [4;35;1mProduct Load (0.9ms)[0m   [0mSELECT * FROM "products" [0m
+Rendering template within layouts/products
+Rendering products/index
+Completed in 25ms (View: 16, DB: 1) | 200 OK [http://localhost/products]
